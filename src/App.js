@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import Players from './components/Players/Players';
+import { useEffect, useState } from 'react';
+import data from './data/data.json';
+import PlayerInfo from './components/PlayerInfo/PlayerInfo';
 
 function App() {
+  const [players, setPlayers] = useState([]);
+  const [addPlayer, setAddPlayer] = useState([])
+  useEffect( () => setPlayers(data) ,[]);
+  const addPlayerHandler = (players) => {
+    const newAdded = [...addPlayer, players];
+    setAddPlayer(newAdded);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="player-container">
+        {
+          players.map( players => <Players players ={players} addPlayerHandler={addPlayerHandler}></Players>)
+        }
+      </div>
+      <div className="plInfo-container">
+        <PlayerInfo addPlayer={addPlayer}></PlayerInfo>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.player-information{
+    background-color: #f1ebeb;
+    height: 100%;
+    padding: 5px;
+    width: 100%;
+}
+.player-information h3{
+    margin-top: 0;
+    padding-top: 10px;
+}
+.playerName{
+    color: blue;
+}
+.totalAmount{
+    color: darkorchid;
+}
